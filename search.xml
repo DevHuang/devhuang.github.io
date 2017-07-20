@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[Block精析]]></title>
-      <url>/2017/08/02/textMD/</url>
+      <url>/2016/08/02/textMD/</url>
       <content type="html"><![CDATA[<p>工作中经常会使用到Block 但是对于Block你真正的了解吗？下面是我对 Block 的整理，从零开始，由浅入深，并且带了几个 Block 实际开发的应用场景和面试经常会被问到的问题。<br><a id="more"></a></p>
 <h3 id="Block的概念"><a href="#Block的概念" class="headerlink" title="Block的概念"></a>Block的概念</h3><p>苹果的官方文档给出这样的一句话<br>Blocks are a language-level feature added to C, Objective-C and C++, which allow you to create distinct segments of code that can be passed around to methods or functions as if they were values.<br>翻译过来就是：Block是Apple Inc.为C、C++以及Objective-C添加的特性，可以创建不同代码段传递给方法或函数。<br>简单点来说Block 是一种特殊的数据类型(匿名的函数和代码块)，可以正常定义变量、作为参数、作为返回值；还可以保存一段代码，在需要的时候调用.当然你也可以理解成闭包。<br>某次看到阮一峰的一句话:闭包就是能够读取其它函数内部变量的函数。</p>
 <h3 id="Block的声明-类型-定义-调用"><a href="#Block的声明-类型-定义-调用" class="headerlink" title="Block的声明,类型,定义,调用"></a>Block的声明,类型,定义,调用</h3><p>####声明####<br>    <code>声明格式:返回值(^block变量名)(参数)</code></p>
@@ -22,49 +22,6 @@
             <tag> iOS </tag>
             
             <tag> Block </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[GitHubPages + Hexo 搭建个人博客]]></title>
-      <url>/2017/06/22/hello-world/</url>
-      <content type="html"><![CDATA[<p>首先:GitHubPages是什么？<br>GitHubPages可以认为是个人用户编写的并且上传到github的网页文件<br>其次,为什么采用GitHubPages搭建？<br>300M的免费空间,众多大牛的聚集地,趋势所向,赶紧行动起来吧,跟着我一起搭建属于自己的博客!<br><a id="more"></a></p>
-<h3 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h3><p>地址:<a href="http://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank" rel="external">http://www.runoob.com/nodejs/nodejs-install-setup.html</a></p>
-<h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p>下载地址:<a href="http://git-scm.com/download/" target="_blank" rel="external">http://git-scm.com/download/</a></p>
-<p>以下步骤也可以按照Hexo的官方文档来进行<br>地址：<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/index.html</a></p>
-<p>你的系统需要支持Node和Git哦……</p>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>选定需要安装的文件夹 比如我们选择D:\Hexo目录<br>打开终端命令行如下:<br>$ cd D:/Hexo<br>$ npm install hexo-cli -g<br>$ hexo init blog #blog为你指定的新建文件的文件夹<br>$ cd blog<br>$ npm install<br>$ hexo g # 或者hexo generate<br>$ hexo s # 或者hexo server，可以在<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> 查看</p>
-<p>Hexo常用命令<br>hexo generate (hexo g) 生成静态文件，会在当前目录下生成一个新的叫做public的文件夹 简写 hexo g<br>hexo server (hexo s) 启动本地web服务，用于博客的预览 简写 hexo s<br>hexo deploy (hexo d) 部署播客到远端（比如github, heroku等平台） 简写 hexo d<br>hexo new “postName” #新建文章 简写 hexo n<br>hexo new page “pageName” #新建页面</p>
-<p>组合命令<br>hexo d -g #生成部署<br>hexo s -g #生成预览</p>
-<p>此时我们cd到Hexo文件夹目录下 使用以下命令<br>hexo clean<br>hexo g<br>hexo s</p>
-<p>然后看到提示启动本地服务成功即可打开浏览器 输入网址 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> 进行访问<br>Hexo默认的主题是landscape画风如下</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1853274-eb070a3f8aafa918.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text"></p>
-<h3 id="开始写文章"><a href="#开始写文章" class="headerlink" title="开始写文章"></a>开始写文章</h3><p>新建一个文件 我们在终端里 进入到\blog\source目录 执行hexo new [layout] “postName” #新建文章 即可 这里需要注意的是其中layout是可选参数，默认值为post 我们可以到本地的scaffolds下查看<br>默认为<br>title: GitHubPages + Hexo 搭建个人博客 # 文章标题名称<br>date: 1498141729339 #文章生成时间，可随意更改</p>
-<h2 id="tags-文章标签"><a href="#tags-文章标签" class="headerlink" title="tags: #文章标签"></a>tags: #文章标签</h2><p>注意：所有文件后都必须要有空格哦，不然执行hexo g 就会报错</p>
-<p>可能你会认为接下来的书写效率较低　那么笔者推荐你使用MarkDown书写工具 比如<a href="https://github.com/atom/atom" target="_blank" rel="external">Atom</a> 或者<a href="http://www.jetbrains.com/idea/" target="_blank" rel="external">IntelliJ IDEA</a> 笔者下面采用Atom示例</p>
-<p>打开Atom 选择Add Project Folder 将本地的Hexo目录打开即可<br><img src="http://upload-images.jianshu.io/upload_images/1853274-50ffe92ab7aae792.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text"><br>看起来是不是方面很多 关于书写MarkDown的语法可以参考<a href="http://wowubuntu.com/markdown/#link" target="_blank" rel="external">《Markdown 语法说明》</a></p>
-<h3 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h3><p>Hexo 提供了较多的主题供我们选择 <a href="https://hexo.io/themes/" target="_blank" rel="external">Hexo主题地址</a> 例如 Next Jacman yelee都是很不错的主题<br>比如yelee主题<br><img src="http://upload-images.jianshu.io/upload_images/1853274-c4223cdc42ce1719.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text"></p>
-<p>步骤如下：<br>（1）进入到本地Hexo的themes目录 使用git clone <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" rel="external">https://github.com/MOxFIVE/hexo-theme-yelee</a> 即可<br> (2)在（1）完成的基础上 我们进入到下面的文件里进行如下操作<br> <img src="http://upload-images.jianshu.io/upload_images/1853274-7d0fc004d1cb4d43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt Text"><br> （3）进行其他的配置可以<a href="http://moxfive.xyz/yelee/new-features.html" target="_blank" rel="external">点此进入</a> ,若是想更新主题 直接在themes目录下 使用git pull + 对应的主题在GitHub上的地址即可</p>
-<h3 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h3><p>建议采用 <a href="https://www.qiniu.com/" target="_blank" rel="external">七牛云</a> 访问速度快，支持日志、防盗链和水印,免费用户有每月10GB流量+总空间10GB+PUT/DELETE 10万次请求+GET 100万次请求,个人用户还不是妥妥的</p>
-<h3 id="申请域名"><a href="#申请域名" class="headerlink" title="申请域名"></a>申请域名</h3><p>到这里目前来看我们搭建的博客地址都是以.github.io结尾 如果你感觉这个二级域名不爽 你也可以去申请一个自己的域名 <a href="http://upload-images.jianshu.io/upload_images/1853274-b989327d0f3690cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="external">阿里云</a></p>
-<p>接着，在repo根目录下建立一个CNAME文件，里面写上域名即可</p>
-<p>到此 GitHubPages + Hexo 搭建个人博客就介绍完毕了</p>
-]]></content>
-      
-        <categories>
-            
-            <category> Hexo搭建 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> GitHubPages </tag>
-            
-            <tag> Hexo </tag>
             
         </tags>
         
@@ -746,6 +703,49 @@
             <tag> iOS </tag>
             
             <tag> 面试 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[GitHubPages + Hexo 搭建个人博客]]></title>
+      <url>/2016/03/22/hello-world/</url>
+      <content type="html"><![CDATA[<p>首先:GitHubPages是什么？<br>GitHubPages可以认为是个人用户编写的并且上传到github的网页文件<br>其次,为什么采用GitHubPages搭建？<br>300M的免费空间,众多大牛的聚集地,趋势所向,赶紧行动起来吧,跟着我一起搭建属于自己的博客!<br><a id="more"></a></p>
+<h3 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h3><p>地址:<a href="http://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank" rel="external">http://www.runoob.com/nodejs/nodejs-install-setup.html</a></p>
+<h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p>下载地址:<a href="http://git-scm.com/download/" target="_blank" rel="external">http://git-scm.com/download/</a></p>
+<p>以下步骤也可以按照Hexo的官方文档来进行<br>地址：<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/index.html</a></p>
+<p>你的系统需要支持Node和Git哦……</p>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>选定需要安装的文件夹 比如我们选择D:\Hexo目录<br>打开终端命令行如下:<br>$ cd D:/Hexo<br>$ npm install hexo-cli -g<br>$ hexo init blog #blog为你指定的新建文件的文件夹<br>$ cd blog<br>$ npm install<br>$ hexo g # 或者hexo generate<br>$ hexo s # 或者hexo server，可以在<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> 查看</p>
+<p>Hexo常用命令<br>hexo generate (hexo g) 生成静态文件，会在当前目录下生成一个新的叫做public的文件夹 简写 hexo g<br>hexo server (hexo s) 启动本地web服务，用于博客的预览 简写 hexo s<br>hexo deploy (hexo d) 部署播客到远端（比如github, heroku等平台） 简写 hexo d<br>hexo new “postName” #新建文章 简写 hexo n<br>hexo new page “pageName” #新建页面</p>
+<p>组合命令<br>hexo d -g #生成部署<br>hexo s -g #生成预览</p>
+<p>此时我们cd到Hexo文件夹目录下 使用以下命令<br>hexo clean<br>hexo g<br>hexo s</p>
+<p>然后看到提示启动本地服务成功即可打开浏览器 输入网址 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> 进行访问<br>Hexo默认的主题是landscape画风如下</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1853274-eb070a3f8aafa918.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text"></p>
+<h3 id="开始写文章"><a href="#开始写文章" class="headerlink" title="开始写文章"></a>开始写文章</h3><p>新建一个文件 我们在终端里 进入到\blog\source目录 执行hexo new [layout] “postName” #新建文章 即可 这里需要注意的是其中layout是可选参数，默认值为post 我们可以到本地的scaffolds下查看<br>默认为<br>title: GitHubPages + Hexo 搭建个人博客 # 文章标题名称<br>date: 1458576000000 #文章生成时间，可随意更改</p>
+<h2 id="tags-文章标签"><a href="#tags-文章标签" class="headerlink" title="tags: #文章标签"></a>tags: #文章标签</h2><p>注意：所有文件后都必须要有空格哦，不然执行hexo g 就会报错</p>
+<p>可能你会认为接下来的书写效率较低　那么笔者推荐你使用MarkDown书写工具 比如<a href="https://github.com/atom/atom" target="_blank" rel="external">Atom</a> 或者<a href="http://www.jetbrains.com/idea/" target="_blank" rel="external">IntelliJ IDEA</a> 笔者下面采用Atom示例</p>
+<p>打开Atom 选择Add Project Folder 将本地的Hexo目录打开即可<br><img src="http://upload-images.jianshu.io/upload_images/1853274-50ffe92ab7aae792.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text"><br>看起来是不是方面很多 关于书写MarkDown的语法可以参考<a href="http://wowubuntu.com/markdown/#link" target="_blank" rel="external">《Markdown 语法说明》</a></p>
+<h3 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h3><p>Hexo 提供了较多的主题供我们选择 <a href="https://hexo.io/themes/" target="_blank" rel="external">Hexo主题地址</a> 例如 Next Jacman yelee都是很不错的主题<br>比如yelee主题<br><img src="http://upload-images.jianshu.io/upload_images/1853274-c4223cdc42ce1719.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text"></p>
+<p>步骤如下：<br>（1）进入到本地Hexo的themes目录 使用git clone <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" rel="external">https://github.com/MOxFIVE/hexo-theme-yelee</a> 即可<br> (2)在（1）完成的基础上 我们进入到下面的文件里进行如下操作<br> <img src="http://upload-images.jianshu.io/upload_images/1853274-7d0fc004d1cb4d43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt Text"><br> （3）进行其他的配置可以<a href="http://moxfive.xyz/yelee/new-features.html" target="_blank" rel="external">点此进入</a> ,若是想更新主题 直接在themes目录下 使用git pull + 对应的主题在GitHub上的地址即可</p>
+<h3 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h3><p>建议采用 <a href="https://www.qiniu.com/" target="_blank" rel="external">七牛云</a> 访问速度快，支持日志、防盗链和水印,免费用户有每月10GB流量+总空间10GB+PUT/DELETE 10万次请求+GET 100万次请求,个人用户还不是妥妥的</p>
+<h3 id="申请域名"><a href="#申请域名" class="headerlink" title="申请域名"></a>申请域名</h3><p>到这里目前来看我们搭建的博客地址都是以.github.io结尾 如果你感觉这个二级域名不爽 你也可以去申请一个自己的域名 <a href="http://upload-images.jianshu.io/upload_images/1853274-b989327d0f3690cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="external">阿里云</a></p>
+<p>接着，在repo根目录下建立一个CNAME文件，里面写上域名即可</p>
+<p>到此 GitHubPages + Hexo 搭建个人博客就介绍完毕了</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Hexo搭建 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> GitHubPages </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
         
