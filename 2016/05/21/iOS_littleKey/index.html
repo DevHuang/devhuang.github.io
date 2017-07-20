@@ -1,0 +1,918 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS小知识," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="笔者最近读了一本书叫做《编写高质量 iOS 与 OSX 代码的52个有效方法》,没错，就是这本书，读完这本书，对于代码标准和规范我就格外上心了，但是自己也做了笔记，大概就是一下这些，其实都很基础啦，但是呢，有时候真的想不起来，哈哈，你们有木有呢？">
+<meta name="keywords" content="iOS小知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS知识点方便查阅(含代码)">
+<meta property="og:url" content="http://yoursite.com/2016/05/21/iOS_littleKey/index.html">
+<meta property="og:site_name" content="DevHuang&#39;s Blog">
+<meta property="og:description" content="笔者最近读了一本书叫做《编写高质量 iOS 与 OSX 代码的52个有效方法》,没错，就是这本书，读完这本书，对于代码标准和规范我就格外上心了，但是自己也做了笔记，大概就是一下这些，其实都很基础啦，但是呢，有时候真的想不起来，哈哈，你们有木有呢？">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/foPACGrddJ2PuY3J69r7WZfYjULHibibh5gwZ91LDJGjQQjdpMBZCWclrjEJJoRLH3b6RMmlBmq0so8KJdL04uYg/0?wxfrom=5&wx_lazy=1">
+<meta property="og:updated_time" content="2017-07-20T16:33:10.981Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS知识点方便查阅(含代码)">
+<meta name="twitter:description" content="笔者最近读了一本书叫做《编写高质量 iOS 与 OSX 代码的52个有效方法》,没错，就是这本书，读完这本书，对于代码标准和规范我就格外上心了，但是自己也做了笔记，大概就是一下这些，其实都很基础啦，但是呢，有时候真的想不起来，哈哈，你们有木有呢？">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_gif/foPACGrddJ2PuY3J69r7WZfYjULHibibh5gwZ91LDJGjQQjdpMBZCWclrjEJJoRLH3b6RMmlBmq0so8KJdL04uYg/0?wxfrom=5&wx_lazy=1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/05/21/iOS_littleKey/"/>
+
+
+
+
+
+  <title>iOS知识点方便查阅(含代码) | DevHuang's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DevHuang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">iOS成长之路</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/05/21/iOS_littleKey/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DevHuang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/dog.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DevHuang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS知识点方便查阅(含代码)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-21T09:30:29+08:00">
+                2016-05-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS小知识代码段/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS小知识代码段</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/05/21/iOS_littleKey/" class="leancloud_visitors" data-flag-title="iOS知识点方便查阅(含代码)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>笔者最近读了一本书叫做《编写高质量 iOS 与 OSX 代码的52个有效方法》,没错，就是这本书，读完这本书，对于代码标准和规范我就格外上心了，但是自己也做了笔记，大概就是一下这些，其实都很基础啦，但是呢，有时候真的想不起来，哈哈，你们有木有呢？<br><a id="more"></a></p>
+<h3 id="1、设置UILabel行间距"><a href="#1、设置UILabel行间距" class="headerlink" title="1、设置UILabel行间距"></a>1、设置UILabel行间距</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSMutableAttributedString* attrString = [[NSMutableAttributedString  alloc] initWithString:label.text];    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];    [style setLineSpacing:20];    [attrString addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, label.text.length)];    label.attributedText = attrString;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>// 或者使用xib，看下gif图</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/foPACGrddJ2PuY3J69r7WZfYjULHibibh5gwZ91LDJGjQQjdpMBZCWclrjEJJoRLH3b6RMmlBmq0so8KJdL04uYg/0?wxfrom=5&amp;wx_lazy=1" alt="img"></p>
+<p>Untitled.gif</p>
+</blockquote>
+<h3 id="2、当使用-performSelector-withObject-withObject-afterDelay-方法时，需要传入多参数问题"><a href="#2、当使用-performSelector-withObject-withObject-afterDelay-方法时，需要传入多参数问题" class="headerlink" title="2、当使用-performSelector:withObject:withObject:afterDelay:方法时，需要传入多参数问题"></a>2、当使用-performSelector:withObject:withObject:afterDelay:方法时，需要传入多参数问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 方法一、// 把参数放进一个数组／字典，直接把数组／字典当成一个参数传过去，具体方法实现的地方再解析这个数组／字典NSArray * array =     [NSArray arrayWithObjects: @&quot;first&quot;, @&quot;second&quot;, nil];[self performSelector:@selector(fooFirstInput:) withObject: array afterDelay:15.0];// 方法二、// 使用NSInvocationSEL aSelector = NSSelectorFromString(@&quot;doSoming:argument2:&quot;);    NSInteger argument1 = 10;    NSString *argument2 = @&quot;argument2&quot;;    if([self respondsToSelector:aSelector]) &#123;        NSInvocation *inv = [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:aSelector]];        [inv setSelector:aSelector];        [inv setTarget:self];        [inv setArgument:&amp;(argument1) atIndex:2];        [inv setArgument:&amp;(argument2) atIndex:3];        [inv performSelector:@selector(invoke) withObject:nil afterDelay:15.0];    &#125;</div></pre></td></tr></table></figure>
+<h3 id="3、UILabel显示不同颜色字体"><a href="#3、UILabel显示不同颜色字体" class="headerlink" title="3、UILabel显示不同颜色字体"></a>3、UILabel显示不同颜色字体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:label.text];[string addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0,5)];[string addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:NSMakeRange(5,6)];[string addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(11,5)];label.attributedText = string;</div></pre></td></tr></table></figure>
+<h3 id="4、比较两个CGRect-CGSize-CGPoint是否相等"><a href="#4、比较两个CGRect-CGSize-CGPoint是否相等" class="headerlink" title="4、比较两个CGRect/CGSize/CGPoint是否相等"></a>4、比较两个CGRect/CGSize/CGPoint是否相等</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">if (CGRectEqualToRect(rect1, rect2)) &#123; // 两个区域相等        // do some    &#125;    if (CGPointEqualToPoint(point1, point2)) &#123; // 两个点相等        // do some    &#125;    if (CGSizeEqualToSize(size1, size2)) &#123; // 两个size相等        // do some    &#125;</div></pre></td></tr></table></figure>
+<h3 id="5、比较两个NSDate相差多少小时"><a href="#5、比较两个NSDate相差多少小时" class="headerlink" title="5、比较两个NSDate相差多少小时"></a>5、比较两个NSDate相差多少小时</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSDate* date1 = someDate; NSDate* date2 = someOtherDate; NSTimeInterval distanceBetweenDates = [date1 timeIntervalSinceDate:date2]; double secondsInAnHour = 3600;// 除以3600是把秒化成小时，除以60得到结果为相差的分钟数 NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;</div></pre></td></tr></table></figure>
+<h3 id="6、每个cell之间增加间距"><a href="#6、每个cell之间增加间距" class="headerlink" title="6、每个cell之间增加间距"></a>6、每个cell之间增加间距</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 方法一，每个分区只显示一行cell，分区头当作你想要的间距(注意，从数据源数组中取值的时候需要用indexPath.section而不是indexPath.row)- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView&#123;    return yourArry.count;&#125;- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section&#123;    return 1;&#125;-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section&#123;    return cellSpacingHeight;&#125;// 方法二，在cell的contentView上加个稍微低一点的view，cell上原本的内容放在你的view上，而不是contentView上，这样能伪造出一个间距来。// 方法三，自定义cell，重写setFrame：方法- (void)setFrame:(CGRect)frame&#123;    frame.size.height -= 20;    [super setFrame:frame];&#125;</div></pre></td></tr></table></figure>
+<h3 id="7、播放一张张连续的图片"><a href="#7、播放一张张连续的图片" class="headerlink" title="7、播放一张张连续的图片"></a>7、播放一张张连续的图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 加入现在有三张图片分别为animate_1、animate_2、animate_3// 方法一    imageView.animationImages = @[[UIImage imageNamed:@&quot;animate_1&quot;], [UIImage imageNamed:@&quot;animate_2&quot;], [UIImage imageNamed:@&quot;animate_3&quot;]];imageView.animationDuration = 1.0;// 方法二    imageView.image = [UIImage animatedImageNamed:@&quot;animate_&quot; duration:1.0];// 方法二解释下，这个方法会加载animate_为前缀的，后边0-1024，也就是animate_0、animate_1一直到animate_1024</div></pre></td></tr></table></figure>
+<h3 id="8、加载gif图片"><a href="#8、加载gif图片" class="headerlink" title="8、加载gif图片"></a>8、加载gif图片</h3><blockquote>
+<p>推荐使用这个框架 FLAnimatedImage</p>
+</blockquote>
+<h3 id="9、防止离屏渲染为image添加圆角"><a href="#9、防止离屏渲染为image添加圆角" class="headerlink" title="9、防止离屏渲染为image添加圆角"></a>9、防止离屏渲染为image添加圆角</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// image分类- (UIImage *)circleImage&#123;// NO代表透明UIGraphicsBeginImageContextWithOptions(self.size, NO, 1);// 获得上下文CGContextRef ctx = UIGraphicsGetCurrentContext();// 添加一个圆CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);// 方形变圆形CGContextAddEllipseInRect(ctx, rect);// 裁剪CGContextClip(ctx);// 将图片画上去[self drawInRect:rect];UIImage *image = UIGraphicsGetImageFromCurrentImageContext();UIGraphicsEndImageContext();return image;&#125;</div></pre></td></tr></table></figure>
+<h3 id="10、查看系统所有字体"><a href="#10、查看系统所有字体" class="headerlink" title="10、查看系统所有字体"></a>10、查看系统所有字体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 打印字体for (id familyName in [UIFont familyNames]) &#123;    NSLog(@&quot;%@&quot;, familyName);    for (id fontName in [UIFont fontNamesForFamilyName:familyName]) NSLog(@&quot;  %@&quot;, fontName);&#125;// 也可以进入这个网址查看 http://iosfonts.com/</div></pre></td></tr></table></figure>
+<h3 id="11、获取随机数"><a href="#11、获取随机数" class="headerlink" title="11、获取随机数"></a>11、获取随机数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSInteger i = arc4random();</div></pre></td></tr></table></figure>
+<h3 id="12、获取随机数小数-0-1之间"><a href="#12、获取随机数小数-0-1之间" class="headerlink" title="12、获取随机数小数(0-1之间)"></a>12、获取随机数小数(0-1之间)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define ARC4RANDOM_MAX      0x100000000double val = ((double)arc4random() / ARC4RANDOM_MAX);</div></pre></td></tr></table></figure>
+<h3 id="13、AVPlayer视频播放完成的通知监听"><a href="#13、AVPlayer视频播放完成的通知监听" class="headerlink" title="13、AVPlayer视频播放完成的通知监听"></a>13、AVPlayer视频播放完成的通知监听</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[[NSNotificationCenter defaultCenter]       addObserver:self      selector:@selector(videoPlayEnd)      name:AVPlayerItemDidPlayToEndTimeNotification       object:nil];</div></pre></td></tr></table></figure>
+<h3 id="14、判断两个rect是否有交叉"><a href="#14、判断两个rect是否有交叉" class="headerlink" title="14、判断两个rect是否有交叉"></a>14、判断两个rect是否有交叉</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">if (CGRectIntersectsRect(rect1, rect2)) &#123;&#125;</div></pre></td></tr></table></figure>
+<h3 id="15、判断一个字符串是否为数字"><a href="#15、判断一个字符串是否为数字" class="headerlink" title="15、判断一个字符串是否为数字"></a>15、判断一个字符串是否为数字</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSCharacterSet *notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];    if ([str rangeOfCharacterFromSet:notDigits].location == NSNotFound)    &#123;      // 是数字    &#125; else    &#123;      // 不是数字    &#125;</div></pre></td></tr></table></figure>
+<h3 id="16、将一个view保存为pdf格式"><a href="#16、将一个view保存为pdf格式" class="headerlink" title="16、将一个view保存为pdf格式"></a>16、将一个view保存为pdf格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)createPDFfromUIView:(UIView*)aView saveToDocumentsWithFileName:(NSString*)aFilename&#123;    NSMutableData *pdfData = [NSMutableData data];    UIGraphicsBeginPDFContextToData(pdfData, aView.bounds, nil);    UIGraphicsBeginPDFPage();    CGContextRef pdfContext = UIGraphicsGetCurrentContext();    [aView.layer renderInContext:pdfContext];    UIGraphicsEndPDFContext();    NSArray* documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask,YES);    NSString* documentDirectory = [documentDirectories objectAtIndex:0];    NSString* documentDirectoryFilename = [documentDirectory stringByAppendingPathComponent:aFilename];    [pdfData writeToFile:documentDirectoryFilename atomically:YES];    NSLog(@&quot;documentDirectoryFileName: %@&quot;,documentDirectoryFilename);&#125;</div></pre></td></tr></table></figure>
+<h3 id="17、让一个view在父视图中心"><a href="#17、让一个view在父视图中心" class="headerlink" title="17、让一个view在父视图中心"></a>17、让一个view在父视图中心</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">child.center = [parent convertPoint:parent.center fromView:parent.superview];</div></pre></td></tr></table></figure>
+<h3 id="18、获取当前导航控制器下前一个控制器"><a href="#18、获取当前导航控制器下前一个控制器" class="headerlink" title="18、获取当前导航控制器下前一个控制器"></a>18、获取当前导航控制器下前一个控制器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (UIViewController *)backViewController&#123;    NSInteger myIndex = [self.navigationController.viewControllers indexOfObject:self];    if ( myIndex != 0 &amp;&amp; myIndex != NSNotFound ) &#123;        return [self.navigationController.viewControllers objectAtIndex:myIndex-1];    &#125; else &#123;        return nil;    &#125;&#125;</div></pre></td></tr></table></figure>
+<h3 id="19、保存UIImage到本地"><a href="#19、保存UIImage到本地" class="headerlink" title="19、保存UIImage到本地"></a>19、保存UIImage到本地</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@&quot;Image.png&quot;];[UIImagePNGRepresentation(image) writeToFile:filePath atomically:YES];</div></pre></td></tr></table></figure>
+<h3 id="20、键盘上方增加工具栏"><a href="#20、键盘上方增加工具栏" class="headerlink" title="20、键盘上方增加工具栏"></a>20、键盘上方增加工具栏</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];[keyboardDoneButtonView sizeToFit];UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@&quot;Done&quot;                                                               style:UIBarButtonItemStyleBordered target:self                                                              action:@selector(doneClicked:)];[keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];txtField.inputAccessoryView = keyboardDoneButtonView;</div></pre></td></tr></table></figure>
+<h3 id="21、copy一个view"><a href="#21、copy一个view" class="headerlink" title="21、copy一个view"></a>21、copy一个view</h3><blockquote>
+<p>因为UIView没有实现copy协议，因此找不到copyWithZone方法，使用copy的时候导致崩溃<br>但是我们可以通过归档再解档实现copy，这相当于对视图进行了一次深拷贝，代码如下</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">id copyOfView = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:originalView]];</div></pre></td></tr></table></figure>
+<h3 id="22、在image上绘制文字并生成新的image"><a href="#22、在image上绘制文字并生成新的image" class="headerlink" title="22、在image上绘制文字并生成新的image"></a>22、在image上绘制文字并生成新的image</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UIFont *font = [UIFont boldSystemFontOfSize:12];    UIGraphicsBeginImageContext(image.size);    [image drawInRect:CGRectMake(0,0,image.size.width,image.size.height)];    CGRect rect = CGRectMake(point.x, point.y, image.size.width, image.size.height);    [[UIColor whiteColor] set];    [text drawInRect:CGRectIntegral(rect) withFont:font];     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();    UIGraphicsEndImageContext();</div></pre></td></tr></table></figure>
+<h3 id="23、判断一个view是否为另一个view的子视图"><a href="#23、判断一个view是否为另一个view的子视图" class="headerlink" title="23、判断一个view是否为另一个view的子视图"></a>23、判断一个view是否为另一个view的子视图</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 如果myView是self.view本身，也会返回yesBOOL isSubView = [myView isDescendantOfView:self.view];</div></pre></td></tr></table></figure>
+<h3 id="24、判断一个字符串是否包含另一个字符串"><a href="#24、判断一个字符串是否包含另一个字符串" class="headerlink" title="24、判断一个字符串是否包含另一个字符串"></a>24、判断一个字符串是否包含另一个字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 方法一、这种方法只适用于iOS8之后，如果是配iOS8之前用方法二if ([str containsString:otherStr]) NSLog(@&quot;包含&quot;);// 方法二NSRange range = [str rangeOfString:otherStr];if (range.location != NSNotFound) NSLog(@&quot;包含&quot;);</div></pre></td></tr></table></figure>
+<h3 id="25、UICollectionView自动滚动到某行"><a href="#25、UICollectionView自动滚动到某行" class="headerlink" title="25、UICollectionView自动滚动到某行"></a>25、UICollectionView自动滚动到某行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 重写viewDidLayoutSubviews方法-(void)viewDidLayoutSubviews &#123;   [super viewDidLayoutSubviews];   [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:NO];&#125;</div></pre></td></tr></table></figure>
+<h3 id="26、修改系统UIAlertController"><a href="#26、修改系统UIAlertController" class="headerlink" title="26、修改系统UIAlertController"></a>26、修改系统UIAlertController</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 但是据说这种方法会被App Store拒绝(慎用！)UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@&quot;&quot; message:@&quot;&quot; preferredStyle:UIAlertControllerStyleActionSheet];    NSMutableAttributedString *hogan = [[NSMutableAttributedString alloc] initWithString:@&quot;我是一个大文本&quot;];    [hogan addAttribute:NSFontAttributeName                  value:[UIFont systemFontOfSize:30]                  range:NSMakeRange(4, 1)];    [hogan addAttribute:NSForegroundColorAttributeName                  value:[UIColor redColor]                  range:NSMakeRange(4, 1)];    [alertVC setValue:hogan forKey:@&quot;attributedTitle&quot;];    UIAlertAction *button = [UIAlertAction actionWithTitle:@&quot;Label text&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)&#123; &#125;];    UIImage *accessoryImage = [UIImage imageNamed:@&quot;1&quot;];    [button setValue:accessoryImage forKey:@&quot;image&quot;];    [alertVC addAction:button];    [self presentViewController:alertVC animated:YES completion:nil];</div></pre></td></tr></table></figure>
+<h3 id="27、判断某一行的cell是否已经显示"><a href="#27、判断某一行的cell是否已经显示" class="headerlink" title="27、判断某一行的cell是否已经显示"></a>27、判断某一行的cell是否已经显示</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CGRect cellRect = [tableView rectForRowAtIndexPath:indexPath];BOOL completelyVisible = CGRectContainsRect(tableView.bounds, cellRect);</div></pre></td></tr></table></figure>
+<h3 id="28、让导航控制器pop回指定的控制器"><a href="#28、让导航控制器pop回指定的控制器" class="headerlink" title="28、让导航控制器pop回指定的控制器"></a>28、让导航控制器pop回指定的控制器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSMutableArray *allViewControllers = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];for (UIViewController *aViewController in allViewControllers) &#123;    if ([aViewController isKindOfClass:[RequiredViewController class]]) &#123;        [self.navigationController popToViewController:aViewController animated:NO];    &#125;&#125;</div></pre></td></tr></table></figure>
+<h3 id="29、动画修改label上的文字"><a href="#29、动画修改label上的文字" class="headerlink" title="29、动画修改label上的文字"></a>29、动画修改label上的文字</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 方法一CATransition *animation = [CATransition animation];    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];    animation.type = kCATransitionFade;    animation.duration = 0.75;    [self.label.layer addAnimation:animation forKey:@&quot;kCATransitionFade&quot;];    self.label.text = @&quot;New&quot;;// 方法二[UIView transitionWithView:self.label                      duration:0.25f                       options:UIViewAnimationOptionTransitionCrossDissolve                    animations:^&#123;                        self.label.text = @&quot;Well done!&quot;;                    &#125; completion:nil];// 方法三[UIView animateWithDuration:1.0                     animations:^&#123;                         self.label.alpha = 0.0f;                         self.label.text = @&quot;newText&quot;;                         self.label.alpha = 1.0f;                     &#125;];</div></pre></td></tr></table></figure>
+<h3 id="30、判断字典中是否包含某个key值"><a href="#30、判断字典中是否包含某个key值" class="headerlink" title="30、判断字典中是否包含某个key值"></a>30、判断字典中是否包含某个key值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">if ([dic objectForKey:@&quot;yourKey&quot;]) &#123;    NSLog(@&quot;有这个值&quot;);&#125; else &#123;    NSLog(@&quot;没有这个值&quot;);&#125;</div></pre></td></tr></table></figure>
+<h3 id="31、获取屏幕方向"><a href="#31、获取屏幕方向" class="headerlink" title="31、获取屏幕方向"></a>31、获取屏幕方向</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;if(orientation == 0) //Default orientation     //默认else if(orientation == UIInterfaceOrientationPortrait)    //竖屏else if(orientation == UIInterfaceOrientationLandscapeLeft)    // 左横屏else if(orientation == UIInterfaceOrientationLandscapeRight)    //右横屏</div></pre></td></tr></table></figure>
+<h3 id="32、设置UIImage的透明度"><a href="#32、设置UIImage的透明度" class="headerlink" title="32、设置UIImage的透明度"></a>32、设置UIImage的透明度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 方法一、添加UIImage分类- (UIImage *)imageByApplyingAlpha:(CGFloat) alpha &#123;    UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0f);    CGContextRef ctx = UIGraphicsGetCurrentContext();    CGRect area = CGRectMake(0, 0, self.size.width, self.size.height);    CGContextScaleCTM(ctx, 1, -1);    CGContextTranslateCTM(ctx, 0, -area.size.height);    CGContextSetBlendMode(ctx, kCGBlendModeMultiply);    CGContextSetAlpha(ctx, alpha);    CGContextDrawImage(ctx, area, self.CGImage);    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();    UIGraphicsEndImageContext();    return newImage;&#125;// 方法二、如果没有奇葩需求，干脆用UIImageView设置透明度UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageWithName:@&quot;yourImage&quot;]];imageView.alpha = 0.5;</div></pre></td></tr></table></figure>
+<h3 id="33、Attempt-to-mutate-immutable-object-with-insertString-atIndex"><a href="#33、Attempt-to-mutate-immutable-object-with-insertString-atIndex" class="headerlink" title="33、Attempt to mutate immutable object with insertString:atIndex:"></a>33、Attempt to mutate immutable object with insertString:atIndex:</h3><blockquote>
+<p>这个错是因为你拿字符串调用insertString:atIndex:方法的时候，调用对象不是NSMutableString，应该先转成这个类型再调用</p>
+</blockquote>
+<h3 id="34、UIWebView添加单击手势不响应"><a href="#34、UIWebView添加单击手势不响应" class="headerlink" title="34、UIWebView添加单击手势不响应"></a>34、UIWebView添加单击手势不响应</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(webViewClick)];        tap.delegate = self;        [_webView addGestureRecognizer:tap];// 因为webView本身有一个单击手势，所以再添加会造成手势冲突，从而不响应。需要绑定手势代理，并实现下边的代理方法- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer&#123;    return YES;&#125;</div></pre></td></tr></table></figure>
+<h3 id="35、获取手机RAM容量"><a href="#35、获取手机RAM容量" class="headerlink" title="35、获取手机RAM容量"></a>35、获取手机RAM容量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 需要导入#import &lt;mach/mach.h&gt;mach_port_t host_port;    mach_msg_type_number_t host_size;    vm_size_t pagesize;    host_port = mach_host_self();    host_size = sizeof(vm_statistics_data_t) / sizeof(integer_t);    host_page_size(host_port, &amp;pagesize);    vm_statistics_data_t vm_stat;    if (host_statistics(host_port, HOST_VM_INFO, (host_info_t)&amp;vm_stat, &amp;host_size) != KERN_SUCCESS) &#123;        NSLog(@&quot;Failed to fetch vm statistics&quot;);    &#125;    /* Stats in bytes */    natural_t mem_used = (vm_stat.active_count +                          vm_stat.inactive_count +                          vm_stat.wire_count) * pagesize;    natural_t mem_free = vm_stat.free_count * pagesize;    natural_t mem_total = mem_used + mem_free;    NSLog(@&quot;已用: %u 可用: %u 总共: %u&quot;, mem_used, mem_free, mem_total);</div></pre></td></tr></table></figure>
+<h3 id="36、地图上两个点之间的实际距离"><a href="#36、地图上两个点之间的实际距离" class="headerlink" title="36、地图上两个点之间的实际距离"></a>36、地图上两个点之间的实际距离</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 需要导入#import &lt;CoreLocation/CoreLocation.h&gt;CLLocation *locA = [[CLLocation alloc] initWithLatitude:34 longitude:113];    CLLocation *locB = [[CLLocation alloc] initWithLatitude:31.05 longitude:121.76];// CLLocationDistance求出的单位为米    CLLocationDistance distance = [locA distanceFromLocation:locB];</div></pre></td></tr></table></figure>
+<h3 id="37、在应用中打开设置的某个界面"><a href="#37、在应用中打开设置的某个界面" class="headerlink" title="37、在应用中打开设置的某个界面"></a>37、在应用中打开设置的某个界面</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 打开设置-&gt;通用[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@&quot;prefs:root=General&quot;]];// 以下是设置其他界面prefs:root=General&amp;path=Aboutprefs:root=General&amp;path=ACCESSIBILITYprefs:root=AIRPLANE_MODEprefs:root=General&amp;path=AUTOLOCKprefs:root=General&amp;path=USAGE/CELLULAR_USAGEprefs:root=Brightnessprefs:root=Bluetoothprefs:root=General&amp;path=DATE_AND_TIMEprefs:root=FACETIMEprefs:root=Generalprefs:root=General&amp;path=Keyboardprefs:root=CASTLEprefs:root=CASTLE&amp;path=STORAGE_AND_BACKUPprefs:root=General&amp;path=INTERNATIONALprefs:root=LOCATION_SERVICESprefs:root=ACCOUNT_SETTINGSprefs:root=MUSICprefs:root=MUSIC&amp;path=EQprefs:root=MUSIC&amp;path=VolumeLimitprefs:root=General&amp;path=Networkprefs:root=NIKE_PLUS_IPODprefs:root=NOTESprefs:root=NOTIFICATIONS_IDprefs:root=Phoneprefs:root=Photosprefs:root=General&amp;path=ManagedConfigurationListprefs:root=General&amp;path=Resetprefs:root=Sounds&amp;path=Ringtoneprefs:root=Safariprefs:root=General&amp;path=Assistantprefs:root=Soundsprefs:root=General&amp;path=SOFTWARE_UPDATE_LINKprefs:root=STOREprefs:root=TWITTERprefs:root=FACEBOOKprefs:root=General&amp;path=USAGE prefs:root=VIDEOprefs:root=General&amp;path=Network/VPNprefs:root=Wallpaperprefs:root=WIFIprefs:root=INTERNET_TETHERINGprefs:root=Phone&amp;path=Blockedprefs:root=DO_NOT_DISTURB</div></pre></td></tr></table></figure>
+<h3 id="38、在UITextView中显示html文本"><a href="#38、在UITextView中显示html文本" class="headerlink" title="38、在UITextView中显示html文本"></a>38、在UITextView中显示html文本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(20, 30, 100, 199)];    textView.backgroundColor = [UIColor redColor];    [self.view addSubview:textView];    NSString *htmlString = @&quot;&lt;h1&gt;Header&lt;/h1&gt;&lt;h2&gt;Subheader&lt;/h2&gt;&lt;p&gt;Some &lt;em&gt;text&lt;/em&gt;&lt;/p&gt;![](http://blogs.babble.com/famecrawler/files/2010/11/mickey_mouse-1097.jpg)&quot;;    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithData: [htmlString dataUsingEncoding:NSUnicodeStringEncoding] options: @&#123; NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType &#125; documentAttributes: nil error: nil];    textView.attributedText = attributedString;</div></pre></td></tr></table></figure>
+<h3 id="39、监听scrollView是否滚动到了顶部／底部"><a href="#39、监听scrollView是否滚动到了顶部／底部" class="headerlink" title="39、监听scrollView是否滚动到了顶部／底部"></a>39、监听scrollView是否滚动到了顶部／底部</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(void)scrollViewDidScroll: (UIScrollView*)scrollView&#123;    float scrollViewHeight = scrollView.frame.size.height;    float scrollContentSizeHeight = scrollView.contentSize.height;    float scrollOffset = scrollView.contentOffset.y;    if (scrollOffset == 0)    &#123;        // 滚动到了顶部    &#125;    else if (scrollOffset + scrollViewHeight == scrollContentSizeHeight)    &#123;        // 滚动到了底部    &#125;&#125;</div></pre></td></tr></table></figure>
+<h3 id="40、UISlider增量／减量为固定值-假如为5"><a href="#40、UISlider增量／减量为固定值-假如为5" class="headerlink" title="40、UISlider增量／减量为固定值(假如为5)"></a>40、UISlider增量／减量为固定值(假如为5)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)setupSlider&#123;    UISlider *slider = [[UISlider alloc] init];    [self.view addSubview:slider];    [slider addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];    slider.maximumValue = 100;    slider.minimumValue = 0;    slider.frame = CGRectMake(200, 20, 100, 30);&#125;- (void)sliderAction:(UISlider *)slider&#123;    [slider setValue:((int)((slider.value + 2.5) / 5) * 5) animated:NO];&#125;</div></pre></td></tr></table></figure>
+<h3 id="41、选中textField或者textView所有文本-我这里以textView为例"><a href="#41、选中textField或者textView所有文本-我这里以textView为例" class="headerlink" title="41、选中textField或者textView所有文本(我这里以textView为例)"></a>41、选中textField或者textView所有文本(我这里以textView为例)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[self.textView setSelectedTextRange:[self.textView textRangeFromPosition:self.textView.beginningOfDocument toPosition:self.textView.endOfDocument]]</div></pre></td></tr></table></figure>
+<h3 id="42、从导航控制器中删除某个控制器"><a href="#42、从导航控制器中删除某个控制器" class="headerlink" title="42、从导航控制器中删除某个控制器"></a>42、从导航控制器中删除某个控制器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 方法一、知道这个控制器所处的导航控制器下标NSMutableArray *navigationArray = [[NSMutableArray alloc] initWithArray: self.navigationController.viewControllers];[navigationArray removeObjectAtIndex: 2]; self.navigationController.viewControllers = navigationArray;// 方法二、知道具体是哪个控制器NSArray* tempVCA = [self.navigationController viewControllers];for(UIViewController *tempVC in tempVCA)&#123;    if([tempVC isKindOfClass:[urViewControllerClass class]])    &#123;        [tempVC removeFromParentViewController];    &#125;&#125;</div></pre></td></tr></table></figure>
+<h3 id="43、隐藏UITextView-UITextField光标"><a href="#43、隐藏UITextView-UITextField光标" class="headerlink" title="43、隐藏UITextView/UITextField光标"></a>43、隐藏UITextView/UITextField光标</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">textField.tintColor = [UIColor clearColor];</div></pre></td></tr></table></figure>
+<h3 id="44、当UITextView-UITextField中没有文字时，禁用回车键"><a href="#44、当UITextView-UITextField中没有文字时，禁用回车键" class="headerlink" title="44、当UITextView/UITextField中没有文字时，禁用回车键"></a>44、当UITextView/UITextField中没有文字时，禁用回车键</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">textField.enablesReturnKeyAutomatically = YES;</div></pre></td></tr></table></figure>
+<h3 id="45、字符串encode编码-编码url字符串不成功的问题"><a href="#45、字符串encode编码-编码url字符串不成功的问题" class="headerlink" title="45、字符串encode编码(编码url字符串不成功的问题)"></a>45、字符串encode编码(编码url字符串不成功的问题)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 我们一般用这个方法处理stringByAddingPercentEscapesUsingEncoding但是这个方法好想不会处理／和&amp;这种特殊符号，这种情况就需要用下边这个方法处理@implementation NSString (NSString_Extended)- (NSString *)urlencode &#123;    NSMutableString *output = [NSMutableString string];    const unsigned char *source = (const unsigned char *)[self UTF8String];    int sourceLen = strlen((const char *)source);    for (int i = 0; i &lt; sourceLen; ++i) &#123;        const unsigned char thisChar = source[i];        if (thisChar == &apos; &apos;)&#123;            [output appendString:@&quot;+&quot;];        &#125; else if (thisChar == &apos;.&apos; || thisChar == &apos;-&apos; || thisChar == &apos;_&apos; || thisChar == &apos;~&apos; ||                    (thisChar &gt;= &apos;a&apos; &amp;&amp; thisChar &lt;= &apos;z&apos;) ||                   (thisChar &gt;= &apos;A&apos; &amp;&amp; thisChar &lt;= &apos;Z&apos;) ||                   (thisChar &gt;= &apos;0&apos; &amp;&amp; thisChar &lt;= &apos;9&apos;)) &#123;            [output appendFormat:@&quot;%c&quot;, thisChar];        &#125; else &#123;            [output appendFormat:@&quot;%%%02X&quot;, thisChar];        &#125;    &#125;    return output;&#125;</div></pre></td></tr></table></figure>
+<h3 id="46、计算UILabel上某段文字的frame"><a href="#46、计算UILabel上某段文字的frame" class="headerlink" title="46、计算UILabel上某段文字的frame"></a>46、计算UILabel上某段文字的frame</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@implementation UILabel (TextRect)- (CGRect)boundingRectForCharacterRange:(NSRange)range&#123;    NSTextStorage *textStorage = [[NSTextStorage alloc] initWithAttributedString:[self attributedText]];    NSLayoutManager *layoutManager = [[NSLayoutManager alloc] init];    [textStorage addLayoutManager:layoutManager];    NSTextContainer *textContainer = [[NSTextContainer alloc] initWithSize:[self bounds].size];    textContainer.lineFragmentPadding = 0;    [layoutManager addTextContainer:textContainer];    NSRange glyphRange;    [layoutManager characterRangeForGlyphRange:range actualGlyphRange:&amp;glyphRange];    return [layoutManager boundingRectForGlyphRange:glyphRange inTextContainer:textContainer];&#125;</div></pre></td></tr></table></figure>
+<h3 id="47、获取随机UUID"><a href="#47、获取随机UUID" class="headerlink" title="47、获取随机UUID"></a>47、获取随机UUID</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSString *result;    if([[[UIDevice currentDevice] systemVersion] floatValue] &gt; 6.0)    &#123;       result = [[NSUUID UUID] UUIDString];    &#125;    else    &#123;        CFUUIDRef uuidRef = CFUUIDCreate(NULL);        CFStringRef uuid = CFUUIDCreateString(NULL, uuidRef);        CFRelease(uuidRef);        result = (__bridge_transfer NSString *)uuid;    &#125;</div></pre></td></tr></table></figure>
+<h3 id="48、仿苹果抖动动画"><a href="#48、仿苹果抖动动画" class="headerlink" title="48、仿苹果抖动动画"></a>48、仿苹果抖动动画</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define RADIANS(degrees) (((degrees) * M_PI) / 180.0)- (void)startAnimate &#123;    view.transform = CGAffineTransformRotate(CGAffineTransformIdentity, RADIANS(-5));    [UIView animateWithDuration:0.25 delay:0.0 options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse) animations:^ &#123;                         view.transform = CGAffineTransformRotate(CGAffineTransformIdentity, RADIANS(5));                     &#125; completion:nil];&#125;- (void)stopAnimate &#123;    [UIView animateWithDuration:0.25 delay:0.0 options:(UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveLinear) animations:^ &#123;                         view.transform = CGAffineTransformIdentity;                     &#125; completion:nil];&#125;</div></pre></td></tr></table></figure>
+<h3 id="49、修改UISearBar内部背景颜色"><a href="#49、修改UISearBar内部背景颜色" class="headerlink" title="49、修改UISearBar内部背景颜色"></a>49、修改UISearBar内部背景颜色</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UITextField *textField = [_searchBar valueForKey:@&quot;_searchField&quot;];textField.backgroundColor = [UIColor redColor];</div></pre></td></tr></table></figure>
+<h3 id="50、UITextView滚动到顶部"><a href="#50、UITextView滚动到顶部" class="headerlink" title="50、UITextView滚动到顶部"></a>50、UITextView滚动到顶部</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 方法一    [self.textView scrollRangeToVisible:NSMakeRange(0, 0)];    // 方法二    [self.textView setContentOffset:CGPointZero animated:YES];</div></pre></td></tr></table></figure>
+<h3 id="51、通知监听APP生命周期"><a href="#51、通知监听APP生命周期" class="headerlink" title="51、通知监听APP生命周期"></a>51、通知监听APP生命周期</h3><blockquote>
+<p>UIApplicationDidEnterBackgroundNotification 应用程序进入后台<br>UIApplicationWillEnterForegroundNotification 应用程序将要进入前台<br>UIApplicationDidFinishLaunchingNotification 应用程序完成启动<br>UIApplicationDidFinishLaunchingNotification 应用程序由挂起变的活跃<br>UIApplicationWillResignActiveNotification 应用程序挂起(有电话进来或者锁屏)<br>UIApplicationDidReceiveMemoryWarningNotification 应用程序收到内存警告<br>UIApplicationDidReceiveMemoryWarningNotification 应用程序终止(后台杀死、手机关机等)<br>UIApplicationSignificantTimeChangeNotification 当有重大时间改变(凌晨0点，设备时间被修改，时区改变等)<br>UIApplicationWillChangeStatusBarOrientationNotification 设备方向将要改变<br>UIApplicationDidChangeStatusBarOrientationNotification 设备方向改变<br>UIApplicationWillChangeStatusBarFrameNotification 设备状态栏frame将要改变<br>UIApplicationDidChangeStatusBarFrameNotification 设备状态栏frame改变<br>UIApplicationBackgroundRefreshStatusDidChangeNotification 应用程序在后台下载内容的状态发生变化<br>UIApplicationProtectedDataWillBecomeUnavailable 本地受保护的文件被锁定,无法访问<br>UIApplicationProtectedDataWillBecomeUnavailable 本地受保护的文件可用了</p>
+</blockquote>
+<h3 id="52、触摸事件类型"><a href="#52、触摸事件类型" class="headerlink" title="52、触摸事件类型"></a>52、触摸事件类型</h3><blockquote>
+<p>UIControlEventTouchCancel 取消控件当前触发的事件<br>UIControlEventTouchDown 点按下去的事件<br>UIControlEventTouchDownRepeat 重复的触动事件<br>UIControlEventTouchDragEnter 手指被拖动到控件的边界的事件<br>UIControlEventTouchDragExit 一个手指从控件内拖到外界的事件<br>UIControlEventTouchDragInside 手指在控件的边界内拖动的事件<br>UIControlEventTouchDragOutside 手指在控件边界之外被拖动的事件<br>UIControlEventTouchUpInside 手指处于控制范围内的触摸事件<br>UIControlEventTouchUpOutside 手指超出控制范围的控制中的触摸事件</p>
+</blockquote>
+<h3 id="53、UITextField文字周围增加边距"><a href="#53、UITextField文字周围增加边距" class="headerlink" title="53、UITextField文字周围增加边距"></a>53、UITextField文字周围增加边距</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 子类化UITextField，增加insert属性@interface WZBTextField : UITextField@property (nonatomic, assign) UIEdgeInsets insets;@end// 在.m文件重写下列方法- (CGRect)textRectForBounds:(CGRect)bounds &#123;    CGRect paddedRect = UIEdgeInsetsInsetRect(bounds, self.insets);    if (self.rightViewMode == UITextFieldViewModeAlways || self.rightViewMode == UITextFieldViewModeUnlessEditing) &#123;        return [self adjustRectWithWidthRightView:paddedRect];    &#125;    return paddedRect;&#125;- (CGRect)placeholderRectForBounds:(CGRect)bounds &#123;    CGRect paddedRect = UIEdgeInsetsInsetRect(bounds, self.insets);    if (self.rightViewMode == UITextFieldViewModeAlways || self.rightViewMode == UITextFieldViewModeUnlessEditing) &#123;        return [self adjustRectWithWidthRightView:paddedRect];    &#125;    return paddedRect;&#125;- (CGRect)editingRectForBounds:(CGRect)bounds &#123;    CGRect paddedRect = UIEdgeInsetsInsetRect(bounds, self.insets);    if (self.rightViewMode == UITextFieldViewModeAlways || self.rightViewMode == UITextFieldViewModeWhileEditing) &#123;        return [self adjustRectWithWidthRightView:paddedRect];    &#125;    return paddedRect;&#125;- (CGRect)adjustRectWithWidthRightView:(CGRect)bounds &#123;    CGRect paddedRect = bounds;    paddedRect.size.width -= CGRectGetWidth(self.rightView.frame);    return paddedRect;&#125;</div></pre></td></tr></table></figure>
+<h3 id="54、监听UISlider拖动状态"><a href="#54、监听UISlider拖动状态" class="headerlink" title="54、监听UISlider拖动状态"></a>54、监听UISlider拖动状态</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 添加事件[slider addTarget:self action:@selector(sliderValurChanged:forEvent:) forControlEvents:UIControlEventValueChanged];// 实现方法- (void)sliderValurChanged:(UISlider*)slider forEvent:(UIEvent*)event &#123;    UITouch *touchEvent = [[event allTouches] anyObject];    switch (touchEvent.phase) &#123;        case UITouchPhaseBegan:            NSLog(@&quot;开始拖动&quot;);            break;        case UITouchPhaseMoved:            NSLog(@&quot;正在拖动&quot;);            break;        case UITouchPhaseEnded:            NSLog(@&quot;结束拖动&quot;);            break;        default:            break;    &#125;&#125;</div></pre></td></tr></table></figure>
+<h3 id="55、设置UITextField光标位置"><a href="#55、设置UITextField光标位置" class="headerlink" title="55、设置UITextField光标位置"></a>55、设置UITextField光标位置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// textField需要设置的textField，index要设置的光标位置- (void)cursorLocation:(UITextField *)textField index:(NSInteger)index&#123;    NSRange range = NSMakeRange(index, 0);    UITextPosition *start = [textField positionFromPosition:[textField beginningOfDocument] offset:range.location];    UITextPosition *end = [textField positionFromPosition:start offset:range.length];    [textField setSelectedTextRange:[textField textRangeFromPosition:start toPosition:end]];&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/path/to/your/wechatqcode ex. /uploads/wechat-qcode.jpg" alt="DevHuang wechat" style="width: 200px; max-width: 100%;"/>
+    <div>Stay hungry, stay foolish !</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS小知识/" rel="tag"># iOS小知识</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/12/iOS_Guide/" rel="next" title="iOS工程师面试知识点集锦">
+                <i class="fa fa-chevron-left"></i> iOS工程师面试知识点集锦
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/18/blog_First/" rel="prev" title="iOS面试题">
+                iOS面试题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/dog.jpg"
+               alt="DevHuang" />
+          <p class="site-author-name" itemprop="name">DevHuang</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、设置UILabel行间距"><span class="nav-number">1.</span> <span class="nav-text">1、设置UILabel行间距</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、当使用-performSelector-withObject-withObject-afterDelay-方法时，需要传入多参数问题"><span class="nav-number">2.</span> <span class="nav-text">2、当使用-performSelector:withObject:withObject:afterDelay:方法时，需要传入多参数问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、UILabel显示不同颜色字体"><span class="nav-number">3.</span> <span class="nav-text">3、UILabel显示不同颜色字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、比较两个CGRect-CGSize-CGPoint是否相等"><span class="nav-number">4.</span> <span class="nav-text">4、比较两个CGRect/CGSize/CGPoint是否相等</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、比较两个NSDate相差多少小时"><span class="nav-number">5.</span> <span class="nav-text">5、比较两个NSDate相差多少小时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、每个cell之间增加间距"><span class="nav-number">6.</span> <span class="nav-text">6、每个cell之间增加间距</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、播放一张张连续的图片"><span class="nav-number">7.</span> <span class="nav-text">7、播放一张张连续的图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、加载gif图片"><span class="nav-number">8.</span> <span class="nav-text">8、加载gif图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9、防止离屏渲染为image添加圆角"><span class="nav-number">9.</span> <span class="nav-text">9、防止离屏渲染为image添加圆角</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10、查看系统所有字体"><span class="nav-number">10.</span> <span class="nav-text">10、查看系统所有字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11、获取随机数"><span class="nav-number">11.</span> <span class="nav-text">11、获取随机数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12、获取随机数小数-0-1之间"><span class="nav-number">12.</span> <span class="nav-text">12、获取随机数小数(0-1之间)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13、AVPlayer视频播放完成的通知监听"><span class="nav-number">13.</span> <span class="nav-text">13、AVPlayer视频播放完成的通知监听</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14、判断两个rect是否有交叉"><span class="nav-number">14.</span> <span class="nav-text">14、判断两个rect是否有交叉</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15、判断一个字符串是否为数字"><span class="nav-number">15.</span> <span class="nav-text">15、判断一个字符串是否为数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16、将一个view保存为pdf格式"><span class="nav-number">16.</span> <span class="nav-text">16、将一个view保存为pdf格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17、让一个view在父视图中心"><span class="nav-number">17.</span> <span class="nav-text">17、让一个view在父视图中心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18、获取当前导航控制器下前一个控制器"><span class="nav-number">18.</span> <span class="nav-text">18、获取当前导航控制器下前一个控制器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19、保存UIImage到本地"><span class="nav-number">19.</span> <span class="nav-text">19、保存UIImage到本地</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20、键盘上方增加工具栏"><span class="nav-number">20.</span> <span class="nav-text">20、键盘上方增加工具栏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21、copy一个view"><span class="nav-number">21.</span> <span class="nav-text">21、copy一个view</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22、在image上绘制文字并生成新的image"><span class="nav-number">22.</span> <span class="nav-text">22、在image上绘制文字并生成新的image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23、判断一个view是否为另一个view的子视图"><span class="nav-number">23.</span> <span class="nav-text">23、判断一个view是否为另一个view的子视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24、判断一个字符串是否包含另一个字符串"><span class="nav-number">24.</span> <span class="nav-text">24、判断一个字符串是否包含另一个字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#25、UICollectionView自动滚动到某行"><span class="nav-number">25.</span> <span class="nav-text">25、UICollectionView自动滚动到某行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#26、修改系统UIAlertController"><span class="nav-number">26.</span> <span class="nav-text">26、修改系统UIAlertController</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27、判断某一行的cell是否已经显示"><span class="nav-number">27.</span> <span class="nav-text">27、判断某一行的cell是否已经显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#28、让导航控制器pop回指定的控制器"><span class="nav-number">28.</span> <span class="nav-text">28、让导航控制器pop回指定的控制器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#29、动画修改label上的文字"><span class="nav-number">29.</span> <span class="nav-text">29、动画修改label上的文字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#30、判断字典中是否包含某个key值"><span class="nav-number">30.</span> <span class="nav-text">30、判断字典中是否包含某个key值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#31、获取屏幕方向"><span class="nav-number">31.</span> <span class="nav-text">31、获取屏幕方向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#32、设置UIImage的透明度"><span class="nav-number">32.</span> <span class="nav-text">32、设置UIImage的透明度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#33、Attempt-to-mutate-immutable-object-with-insertString-atIndex"><span class="nav-number">33.</span> <span class="nav-text">33、Attempt to mutate immutable object with insertString:atIndex:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#34、UIWebView添加单击手势不响应"><span class="nav-number">34.</span> <span class="nav-text">34、UIWebView添加单击手势不响应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#35、获取手机RAM容量"><span class="nav-number">35.</span> <span class="nav-text">35、获取手机RAM容量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#36、地图上两个点之间的实际距离"><span class="nav-number">36.</span> <span class="nav-text">36、地图上两个点之间的实际距离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#37、在应用中打开设置的某个界面"><span class="nav-number">37.</span> <span class="nav-text">37、在应用中打开设置的某个界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#38、在UITextView中显示html文本"><span class="nav-number">38.</span> <span class="nav-text">38、在UITextView中显示html文本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#39、监听scrollView是否滚动到了顶部／底部"><span class="nav-number">39.</span> <span class="nav-text">39、监听scrollView是否滚动到了顶部／底部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#40、UISlider增量／减量为固定值-假如为5"><span class="nav-number">40.</span> <span class="nav-text">40、UISlider增量／减量为固定值(假如为5)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#41、选中textField或者textView所有文本-我这里以textView为例"><span class="nav-number">41.</span> <span class="nav-text">41、选中textField或者textView所有文本(我这里以textView为例)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#42、从导航控制器中删除某个控制器"><span class="nav-number">42.</span> <span class="nav-text">42、从导航控制器中删除某个控制器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#43、隐藏UITextView-UITextField光标"><span class="nav-number">43.</span> <span class="nav-text">43、隐藏UITextView/UITextField光标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#44、当UITextView-UITextField中没有文字时，禁用回车键"><span class="nav-number">44.</span> <span class="nav-text">44、当UITextView/UITextField中没有文字时，禁用回车键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#45、字符串encode编码-编码url字符串不成功的问题"><span class="nav-number">45.</span> <span class="nav-text">45、字符串encode编码(编码url字符串不成功的问题)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#46、计算UILabel上某段文字的frame"><span class="nav-number">46.</span> <span class="nav-text">46、计算UILabel上某段文字的frame</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#47、获取随机UUID"><span class="nav-number">47.</span> <span class="nav-text">47、获取随机UUID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#48、仿苹果抖动动画"><span class="nav-number">48.</span> <span class="nav-text">48、仿苹果抖动动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#49、修改UISearBar内部背景颜色"><span class="nav-number">49.</span> <span class="nav-text">49、修改UISearBar内部背景颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#50、UITextView滚动到顶部"><span class="nav-number">50.</span> <span class="nav-text">50、UITextView滚动到顶部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#51、通知监听APP生命周期"><span class="nav-number">51.</span> <span class="nav-text">51、通知监听APP生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#52、触摸事件类型"><span class="nav-number">52.</span> <span class="nav-text">52、触摸事件类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#53、UITextField文字周围增加边距"><span class="nav-number">53.</span> <span class="nav-text">53、UITextField文字周围增加边距</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#54、监听UISlider拖动状态"><span class="nav-number">54.</span> <span class="nav-text">54、监听UISlider拖动状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#55、设置UITextField光标位置"><span class="nav-number">55.</span> <span class="nav-text">55、设置UITextField光标位置</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DevHuang</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("LSKJErV1WTWliGwJScXmR6HS-gzGzoHsz", "Ffgxrm5JcUBej3cPp7BLIAMk");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
