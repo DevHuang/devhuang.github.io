@@ -3,8 +3,52 @@
   
     
     <entry>
+      <title><![CDATA[深入理解runtime]]></title>
+      <url>/2016/10/18/blog_runtime/</url>
+      <content type="html"></content>
+      
+        <categories>
+            
+            <category> runtime </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> runtime </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[深入理解RunLoop]]></title>
+      <url>/2016/09/01/blog_runLoop/</url>
+      <content type="html"></content>
+      
+        <categories>
+            
+            <category> NSRunLoop </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> RunLoop </tag>
+            
+            <tag> NSRunLoop </tag>
+            
+            <tag> CFRunLoop </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Block精析]]></title>
-      <url>/2016/08/02/textMD/</url>
+      <url>/2016/08/02/blog_block/</url>
       <content type="html"><![CDATA[<p>工作中经常会使用到Block 但是对于Block你真正的了解吗？下面是我对 Block 的整理，从零开始，由浅入深，并且带了几个 Block 实际开发的应用场景和面试经常会被问到的问题。<br><a id="more"></a></p>
 <h3 id="Block的概念"><a href="#Block的概念" class="headerlink" title="Block的概念"></a>Block的概念</h3><p>苹果的官方文档给出这样的一句话<br>Blocks are a language-level feature added to C, Objective-C and C++, which allow you to create distinct segments of code that can be passed around to methods or functions as if they were values.<br>翻译过来就是：Block是Apple Inc.为C、C++以及Objective-C添加的特性，可以创建不同代码段传递给方法或函数。<br>简单点来说Block 是一种特殊的数据类型(匿名的函数和代码块)，可以正常定义变量、作为参数、作为返回值；还可以保存一段代码，在需要的时候调用.当然你也可以理解成闭包。<br>某次看到阮一峰的一句话:闭包就是能够读取其它函数内部变量的函数。</p>
 <h3 id="Block的声明-类型-定义-调用"><a href="#Block的声明-类型-定义-调用" class="headerlink" title="Block的声明,类型,定义,调用"></a>Block的声明,类型,定义,调用</h3><p>####声明####<br>    <code>声明格式:返回值(^block变量名)(参数)</code></p>
@@ -29,7 +73,7 @@
     
     <entry>
       <title><![CDATA[iOS小知识点回顾]]></title>
-      <url>/2016/07/18/blog_First/</url>
+      <url>/2016/07/18/blog_iOSStudy/</url>
       <content type="html"><![CDATA[<p>根据面试情况总结的iOS基础面试题,如有错误,欢迎斧正……<br><a id="more"></a><br><strong>设计模式是什么？ 你知道哪些设计模式，并简要叙述？</strong></p>
 <p>设计模式是一种编码经验，就是用比较成熟的逻辑去处理某一种类型的事情。</p>
 <p>(1). MVC模式：Model View Control，把模型 视图 控制器 层进行解耦合编写。</p>
@@ -672,7 +716,7 @@
     
     <entry>
       <title><![CDATA[iOS工程师面试知识点集锦]]></title>
-      <url>/2016/04/12/iOS_Guide/</url>
+      <url>/2016/04/12/iOS_guide/</url>
       <content type="html"><![CDATA[<p>俗话说的好,金三银四.转眼到了招工作的旺季,笔者总结了些iOS面试的提纲,希望读客们看到了会对你的工作和以后学习方向有帮助……<br><a id="more"></a><br>直接上图<br><img src="http://upload-images.jianshu.io/upload_images/1853274-f938e42bd0b1c7f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text"></p>
 <p>不知道看完你有什么感受，如果觉得自己在某方面不足的话，那就要抓紧时间迎头赶上哦，毕竟，竞争激烈嘛(大佬请自便,哈哈)……</p>
 ]]></content>
