@@ -629,7 +629,7 @@
     
     <entry>
       <title><![CDATA[iOS知识点方便查阅(含代码)]]></title>
-      <url>/2016/05/21/iOS_littleKey/</url>
+      <url>/2016/05/21/blog_littleKey/</url>
       <content type="html"><![CDATA[<p>笔者最近读了一本书叫做《编写高质量 iOS 与 OSX 代码的52个有效方法》,没错，就是这本书，读完这本书，对于代码标准和规范我就格外上心了，但是自己也做了笔记，大概就是一下这些，其实都很基础啦，但是呢，有时候真的想不起来，哈哈，你们有木有呢？<br><a id="more"></a></p>
 <h3 id="1、设置UILabel行间距"><a href="#1、设置UILabel行间距" class="headerlink" title="1、设置UILabel行间距"></a>1、设置UILabel行间距</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSMutableAttributedString* attrString = [[NSMutableAttributedString  alloc] initWithString:label.text];    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];    [style setLineSpacing:20];    [attrString addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, label.text.length)];    label.attributedText = attrString;</div></pre></td></tr></table></figure>
 <h3 id="2、当使用-performSelector-withObject-withObject-afterDelay-方法时，需要传入多参数问题"><a href="#2、当使用-performSelector-withObject-withObject-afterDelay-方法时，需要传入多参数问题" class="headerlink" title="2、当使用-performSelector:withObject:withObject:afterDelay:方法时，需要传入多参数问题"></a>2、当使用-performSelector:withObject:withObject:afterDelay:方法时，需要传入多参数问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 方法一、// 把参数放进一个数组／字典，直接把数组／字典当成一个参数传过去，具体方法实现的地方再解析这个数组／字典NSArray * array =     [NSArray arrayWithObjects: @&quot;first&quot;, @&quot;second&quot;, nil];[self performSelector:@selector(fooFirstInput:) withObject: array afterDelay:15.0];// 方法二、// 使用NSInvocationSEL aSelector = NSSelectorFromString(@&quot;doSoming:argument2:&quot;);    NSInteger argument1 = 10;    NSString *argument2 = @&quot;argument2&quot;;    if([self respondsToSelector:aSelector]) &#123;        NSInvocation *inv = [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:aSelector]];        [inv setSelector:aSelector];        [inv setTarget:self];        [inv setArgument:&amp;(argument1) atIndex:2];        [inv setArgument:&amp;(argument2) atIndex:3];        [inv performSelector:@selector(invoke) withObject:nil afterDelay:15.0];    &#125;</div></pre></td></tr></table></figure>
@@ -716,7 +716,7 @@
     
     <entry>
       <title><![CDATA[iOS工程师面试知识点集锦]]></title>
-      <url>/2016/04/12/iOS_guide/</url>
+      <url>/2016/04/12/blog_guide/</url>
       <content type="html"><![CDATA[<p>俗话说的好,金三银四.转眼到了招工作的旺季,笔者总结了些iOS面试的提纲,希望读客们看到了会对你的工作和以后学习方向有帮助……<br><a id="more"></a><br>直接上图<br><img src="http://upload-images.jianshu.io/upload_images/1853274-f938e42bd0b1c7f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text"></p>
 <p>不知道看完你有什么感受，如果觉得自己在某方面不足的话，那就要抓紧时间迎头赶上哦，毕竟，竞争激烈嘛(大佬请自便,哈哈)……</p>
 ]]></content>
@@ -740,7 +740,7 @@
     
     <entry>
       <title><![CDATA[GitHubPages + Hexo 搭建个人博客]]></title>
-      <url>/2016/03/22/hello-world/</url>
+      <url>/2016/03/22/blog_aboutHexo/</url>
       <content type="html"><![CDATA[<p>首先:GitHubPages是什么？<br>GitHubPages可以认为是个人用户编写的并且上传到github的网页文件<br>其次,为什么采用GitHubPages搭建？<br>300M的免费空间,众多大牛的聚集地,趋势所向,赶紧行动起来吧,跟着我一起搭建属于自己的博客!<br><a id="more"></a></p>
 <h3 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h3><p>地址:<a href="http://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank" rel="external">http://www.runoob.com/nodejs/nodejs-install-setup.html</a></p>
 <h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p>下载地址:<a href="http://git-scm.com/download/" target="_blank" rel="external">http://git-scm.com/download/</a></p>
