@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="DevHuang&#39;s Blog">
 <meta property="og:description" content="工作中经常会使用到Block 但是对于Block你真正的了解吗？下面是我对 Block 的整理，从零开始，由浅入深，并且带了几个 Block 实际开发的应用场景和面试经常会被问到的问题。">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1853274-4c82c43f97f31f00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-08-12T10:01:53.519Z">
+<meta property="og:updated_time" content="2017-08-12T10:06:33.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Block精析">
 <meta name="twitter:description" content="工作中经常会使用到Block 但是对于Block你真正的了解吗？下面是我对 Block 的整理，从零开始，由浅入深，并且带了几个 Block 实际开发的应用场景和面试经常会被问到的问题。">
@@ -383,11 +383,12 @@
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, retain) void(^block)();</div><div class="line"></div><div class="line">用retain打印输出：</div><div class="line">2016-03-30 20:31:06.321 Block[23953:833320] &lt;__NSMallocBlock__: 0x608000056530&gt;</div><div class="line"></div><div class="line">@property (nonatomic, copy) void(^block)();</div><div class="line"></div><div class="line">用copy打印输出：</div><div class="line">2016-08-02 20:34:06.872 Block[24033:837243] &lt;__NSGlobalBlock__: 0x10db8b320&gt;</div></pre></td></tr></table></figure>
 <p>  根据打印出来的log 得出以下结论<br>  (1). 访问外界变量的 Block 默认存储栈中,反之则存储在全局区.<br>  (2). block只能使用copy,不能使用retain. 原因: 使用retain,block还是在栈里面（代码块结束就销毁），而使用copy，block就在堆里面.</p>
 <h4 id="ARC下Block内存管理"><a href="#ARC下Block内存管理" class="headerlink" title="ARC下Block内存管理"></a>ARC下Block内存管理</h4><p>  只要一个对象没有被强指针修饰就会被销毁，默认局部变量对象都是强指针，存放到堆里面.<br>  ARC 环境下：访问外界变量的 Block 默认存储在堆中（实际是放在栈区，然后ARC情况下自动又拷贝到堆区），自动释放.<br>  Block自动从栈区拷贝到堆区的原因是:<br>  栈上的Block，如果其所属的变量作用域结束，该Block就被废弃，如同一般的自动变量。当然，Block中的__block变量也同时被废弃.</p>
-<p>![Alt text]<a href="http://upload-images.jianshu.io/upload_images/1853274-f9fd483f1373b1d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="external">http://upload-images.jianshu.io/upload_images/1853274-f9fd483f1373b1d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a>)</p>
+<p>  ![Alt text]<a href="http://upload-images.jianshu.io/upload_images/1853274-f9fd483f1373b1d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="external">http://upload-images.jianshu.io/upload_images/1853274-f9fd483f1373b1d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a>)</p>
 <p>  为了解决栈块在其变量作用域结束之后被废弃（释放）的问题，我们需要把Block复制到堆中，延长其生命周期。开启ARC时，大多数情况下编译器会恰当地进行判断是否有需要将Block从栈复制到堆，如果有，自动生成将Block从栈上复制到堆上的代码。Block的复制操作执行的是copy实例方法。Block只要调用了copy方法，栈块就会变成堆块。</p>
-<p>![Alt text]<a href="http://upload-images.jianshu.io/upload_images/1853274-043415086438ba0b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="external">http://upload-images.jianshu.io/upload_images/1853274-043415086438ba0b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a>)<br>    Block的复制操作执行的是copy实例方法。不同类型的Block使用copy方法的效果如下表：</p>
-<p>![Alt text]<a href="http://upload-images.jianshu.io/upload_images/1853274-b72a460029a468ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="external">http://upload-images.jianshu.io/upload_images/1853274-b72a460029a468ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a>)</p>
-<pre><code>根据表得知，Block在堆中copy会造成引用计数增加，这与其他Objective-C对象是一样的。虽然Block在栈中也是以对象的身份存在，但是栈块没有引用计数，因为不需要，我们都知道栈区的内存由编译器自动分配释放.
+<p>  ![Alt text]<a href="http://upload-images.jianshu.io/upload_images/1853274-043415086438ba0b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="external">http://upload-images.jianshu.io/upload_images/1853274-043415086438ba0b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a>)<br>    Block的复制操作执行的是copy实例方法。不同类型的Block使用copy方法的效果如下表：</p>
+<pre><code>![Alt text]http://upload-images.jianshu.io/upload_images/1853274-b72a460029a468ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+根据表得知，Block在堆中copy会造成引用计数增加，这与其他Objective-C对象是一样的。虽然Block在栈中也是以对象的身份存在，但是栈块没有引用计数，因为不需要，我们都知道栈区的内存由编译器自动分配释放.
 
 the end:不管Block存储域在何处，用copy方法复制都不会引起任何问题。在不确定时调用copy方法即可.
 
