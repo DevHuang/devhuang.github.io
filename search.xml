@@ -3,6 +3,32 @@
   
     
     <entry>
+      <title><![CDATA[DNS防劫持方案]]></title>
+      <url>/2016/12/07/blog_property/</url>
+      <content type="html"><![CDATA[<p>DNS劫持又称域名劫持，是指在劫持的网络范围内拦截域名解析的请求，分析请求的域名，把审查范围以外的请求放行，否则返回假的IP地址或者什么都不做使请求失去响应，其效果就是对特定的网络不能反应或访问的是假网址。<br><a id="more"></a></p>
+<h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><p>　　DNS（域名系统）的作用是把网络地址（域名，以一个字符串的形式）对应到真实的计算机能够识别的网络地址（IP地址），以便计算机能够进一步通信，传递网址和内容等。由于域名劫持往往只能在特定的被劫持的网络范围内进行，所以在此范围外的域名服务器（DNS）能够返回正常的IP地址，高级用户可以在网络设置把DNS指向这些正常的域名服务器以实现对网址的正常访问。所以域名劫持通常相伴的措施——封锁正常DNS的IP。如果知道该域名的真实IP地址，则可以直接用此IP代替域名后进行访问。比如访问百度域名，可以把访问改为202.108.22.5，从而绕开域名劫持<br>如下图所示<br>  <img src="http://upload-images.jianshu.io/upload_images/1853274-28b760d26c717412.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> DNS </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> DNS </tag>
+            
+            <tag> UIWebView </tag>
+            
+            <tag> WKWebViiew </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[深入理解runtime]]></title>
       <url>/2016/10/18/blog_runtime/</url>
       <content type="html"><![CDATA[<p>什么是运行时刻<br>运行时刻是指一个程序在运行（或者在被执行）的状态。在一些编程语言中，把某些可以重用的程序或者实例打包或者重建成为”运行库”。<br><a id="more"></a></p>
@@ -320,9 +346,9 @@ MRC环境下: 采用 __block
     </entry>
     
     <entry>
-      <title><![CDATA[iOS小知识点回顾]]></title>
+      <title><![CDATA[iOS知识点]]></title>
       <url>/2016/07/18/blog_iOSStudy/</url>
-      <content type="html"><![CDATA[<p>根据面试情况总结的iOS基础面试题,如有错误,欢迎斧正……<br><a id="more"></a><br><strong>设计模式是什么？ 你知道哪些设计模式，并简要叙述？</strong></p>
+      <content type="html"><![CDATA[<p>易忘的小知识,没事拿出来看看~~~~<br><a id="more"></a><br><strong>设计模式是什么？ 你知道哪些设计模式，并简要叙述？</strong></p>
 <p>设计模式是一种编码经验，就是用比较成熟的逻辑去处理某一种类型的事情。</p>
 <p>(1). MVC模式：Model View Control，把模型 视图 控制器 层进行解耦合编写。</p>
 <p>(2). MVVM模式：Model View ViewModel 把模型 视图 业务逻辑 层进行解耦和编写。</p>
@@ -876,7 +902,7 @@ MRC环境下: 采用 __block
     </entry>
     
     <entry>
-      <title><![CDATA[iOS知识点方便查阅(含代码)]]></title>
+      <title><![CDATA[iOS常用代码段]]></title>
       <url>/2016/05/21/blog_littleKey/</url>
       <content type="html"><![CDATA[<p>笔者最近读了一本书叫做《编写高质量 iOS 与 OSX 代码的52个有效方法》,没错，就是这本书，读完这本书，对于代码标准和规范我就格外上心了，但是自己也做了笔记，大概就是一下这些，其实都很基础啦，但是呢，有时候真的想不起来，哈哈，你们有木有呢？<br><a id="more"></a></p>
 <h3 id="1、设置UILabel行间距"><a href="#1、设置UILabel行间距" class="headerlink" title="1、设置UILabel行间距"></a>1、设置UILabel行间距</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSMutableAttributedString* attrString = [[NSMutableAttributedString  alloc] initWithString:label.text];    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];    [style setLineSpacing:20];    [attrString addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, label.text.length)];    label.attributedText = attrString;</div></pre></td></tr></table></figure>
@@ -963,9 +989,11 @@ MRC环境下: 采用 __block
     </entry>
     
     <entry>
-      <title><![CDATA[iOS工程师面试知识点集锦]]></title>
+      <title><![CDATA[个人总结和收集的iOS进阶路线(大佬请绕路)]]></title>
       <url>/2016/04/12/blog_guide/</url>
-      <content type="html"><![CDATA[<p>俗话说的好,金三银四.转眼到了招工作的旺季,笔者总结了些iOS面试的提纲,希望读客们看到了会对你的工作和以后学习方向有帮助……<br><a id="more"></a><br>直接上图<br><img src="http://upload-images.jianshu.io/upload_images/1853274-f938e42bd0b1c7f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text"></p>
+      <content type="html"><![CDATA[<p>个人总结和收集到的iOS有关知识结构……<br><a id="more"></a><br>iOS技术栈<br><img src="http://upload-images.jianshu.io/upload_images/1853274-f938e42bd0b1c7f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text"></p>
+<p>iOS基本知识分类<br><img src="http://upload-images.jianshu.io/upload_images/1853274-262c949b552a2fdc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text"></p>
+<p>《Effective Objective-C》读后总结<br><img src="http://upload-images.jianshu.io/upload_images/1853274-afc25b730be09c20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text"></p>
 <p>不知道看完你有什么感受，如果觉得自己在某方面不足的话，那就要抓紧时间迎头赶上哦，毕竟，竞争激烈嘛(大佬请自便,哈哈)……</p>
 ]]></content>
       
