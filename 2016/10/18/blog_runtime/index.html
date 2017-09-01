@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1853274-fe0a6fe7d9a93cf9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1853274-c290381e13840b9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1853274-ffa14442851733e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-01T12:04:33.815Z">
+<meta property="og:updated_time" content="2017-09-01T13:07:34.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解runtime">
 <meta name="twitter:description" content="什么是运行时刻运行时刻是指一个程序在运行（或者在被执行）的状态。在一些编程语言中，把某些可以重用的程序或者实例打包或者重建成为”运行库”。">
@@ -379,8 +379,9 @@
 <p>那objc_object又是啥呢：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">struct objc_object &#123; Class isa; &#125;;</div></pre></td></tr></table></figure></p>
 <p>objc_object结构体包含一个isa指针，根据isa指针就可以顺藤摸瓜找到对象所属的类。<br>PS:isa指针不总是指向实例对象所属的类，不能依靠它来确定类型，而是应该用class方法来确定实例对象的类。因为KVO的实现机理就是将被观察对象的isa指针指向一个中间类而不是真实的类，这是一种叫做 isa-swizzling 的技术。</p>
 <h4 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h4><p>之所以说isa是指针是因为Class其实是一个指向objc_class结构体的指针：<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedef struct objc_class *Class;</div></pre></td></tr></table></figure></p>
-<p>objc_class 的数据结构如下：<br>  <img src="http://upload-images.jianshu.io/upload_images/1853274-0730cc4dce9f7431.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text"></p>
-<p>可以看到运行时一个类还关联了它的超类指针，类名，成员变量，方法，缓存，还有附属的协议。<br>在objc_class结构体中：ivars是objc_ivar_list指针；methodLists是指向objc_method_list指针的指针。<br>其中 objc_ivar_list 和 objc_method_list 分别是成员变量列表和方法列表：<br>  <img src="http://upload-images.jianshu.io/upload_images/1853274-fe0a6fe7d9a93cf9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text"><br>也就是说可以动态修改 *methodLists 的值来添加成员方法，这也是Category实现的原理，同样解释了 Category 不能添加属性的原因。<br>objc_ivar_list 结构体用来存储成员变量的列表，而 objc_ivar 则是存储了单个成员变量的信息；同理，objc_method_list 结构体存储着方法数组的列表，而单个方法的信息则由 objc_method 结构体存储。</p>
+<p>objc_class 的数据结构如下：<br> <img src="http://upload-images.jianshu.io/upload_images/1853274-0730cc4dce9f7431.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text"></p>
+<p>可以看到运行时一个类还关联了它的超类指针，类名，成员变量，方法，缓存，还有附属的协议。<br>在objc_class结构体中：ivars是objc_ivar_list指针；methodLists是指向objc_method_list指针的指针。<br>其中 objc_ivar_list 和 objc_method_list 分别是成员变量列表和方法列表：<br> <img src="http://upload-images.jianshu.io/upload_images/1853274-fe0a6fe7d9a93cf9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text"></p>
+<p>也就是说可以动态修改 *methodLists 的值来添加成员方法，这也是Category实现的原理，同样解释了 Category 不能添加属性的原因。<br>objc_ivar_list 结构体用来存储成员变量的列表，而 objc_ivar 则是存储了单个成员变量的信息；同理，objc_method_list 结构体存储着方法数组的列表，而单个方法的信息则由 objc_method 结构体存储。</p>
 <p>值得注意的时，objc_class 中也有一个 isa 指针，这说明 Objc 类本身也是一个对象。为了处理类和对象的关系，Runtime 库创建了一种叫做 Meta Class(元类) 的东西，类对象所属的类就叫做元类。Meta Class 表述了类对象本身所具备的元数据。</p>
 <p>我们所熟悉的类方法，就源自于 Meta Class。我们可以理解为类方法就是类对象的实例方法。每个类仅有一个类对象，而每个类对象仅有一个与之相关的元类。</p>
 <p>当你发出一个类似 <a href="类方法">NSObject alloc</a> 的消息时，实际上，这个消息被发送给了一个类对象(Class Object)，这个类对象必须是一个元类的实例，而这个元类同时也是一个根元类(Root Meta Class)的实例。所有元类的 isa 指针最终都指向根元类。</p>
