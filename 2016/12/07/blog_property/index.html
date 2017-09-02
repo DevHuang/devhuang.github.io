@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="DevHuang&#39;s Blog">
 <meta property="og:description" content="DNS劫持又称域名劫持，是指在劫持的网络范围内拦截域名解析的请求，分析请求的域名，把审查范围以外的请求放行，否则返回假的IP地址或者什么都不做使请求失去响应，其效果就是对特定的网络不能反应或访问的是假网址。">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1853274-28b760d26c717412.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-02T11:14:57.084Z">
+<meta property="og:updated_time" content="2017-09-02T15:44:48.848Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DNS防劫持方案">
 <meta name="twitter:description" content="DNS劫持又称域名劫持，是指在劫持的网络范围内拦截域名解析的请求，分析请求的域名，把审查范围以外的请求放行，否则返回假的IP地址或者什么都不做使请求失去响应，其效果就是对特定的网络不能反应或访问的是假网址。">
@@ -366,7 +366,8 @@
 
       
         <p>DNS劫持又称域名劫持，是指在劫持的网络范围内拦截域名解析的请求，分析请求的域名，把审查范围以外的请求放行，否则返回假的IP地址或者什么都不做使请求失去响应，其效果就是对特定的网络不能反应或访问的是假网址。<br><a id="more"></a></p>
-<h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><p>　　DNS（域名系统）的作用是把网络地址（域名，以一个字符串的形式）对应到真实的计算机能够识别的网络地址（IP地址），以便计算机能够进一步通信，传递网址和内容等。由于域名劫持往往只能在特定的被劫持的网络范围内进行，所以在此范围外的域名服务器（DNS）能够返回正常的IP地址，高级用户可以在网络设置把DNS指向这些正常的域名服务器以实现对网址的正常访问。所以域名劫持通常相伴的措施——封锁正常DNS的IP。如果知道该域名的真实IP地址，则可以直接用此IP代替域名后进行访问。比如访问百度域名，可以把访问改为202.108.22.5，从而绕开域名劫持<br>如下图所示<br>  <img src="http://upload-images.jianshu.io/upload_images/1853274-28b760d26c717412.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text"></p>
+<h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><p>　　DNS（域名系统）的作用是把网络地址（域名，以一个字符串的形式）对应到真实的计算机能够识别的网络地址（IP地址），以便计算机能够进一步通信，传递网址和内容等。由于域名劫持往往只能在特定的被劫持的网络范围内进行，所以在此范围外的域名服务器（DNS）能够返回正常的IP地址，高级用户可以在网络设置把DNS指向这些正常的域名服务器以实现对网址的正常访问。所以域名劫持通常相伴的措施——封锁正常DNS的IP。如果知道该域名的真实IP地址，则可以直接用此IP代替域名后进行访问。比如访问百度域名，可以把访问改为202.108.22.5，从而绕开域名劫持<br>如下图所示</p>
+<p>  <img src="http://upload-images.jianshu.io/upload_images/1853274-28b760d26c717412.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text"></p>
 <h3 id="NSURLProtocol"><a href="#NSURLProtocol" class="headerlink" title="NSURLProtocol"></a>NSURLProtocol</h3><p> 官方文档这样描述<br>     <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">An NSURLProtocol object handles the loading of protocol-specific URL data. The NSURLProtocol class itself is an abstract class that provides the infrastructure for processing URLs with a specific URL scheme. You create subclasses for any custom protocols or URL schemes that your app supports.</div></pre></td></tr></table></figure></p>
 <p> NSURLProtocol也是苹果众多黑魔法中的一种，使用它可以轻松地重定义整个URL Loading System。当你注册自定义NSURLProtocol后，就有机会对所有的请求进行统一的处理，基于这一点它可以让你</p>
 <p>(1).自定义请求和响应</p>
